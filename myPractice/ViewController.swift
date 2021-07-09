@@ -11,11 +11,12 @@ import Foundation
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: self.textInputContextIdentifier ?? "", for: indexPath)
+        return cell
     }
     
     @IBOutlet weak var tableView: UIView!
@@ -29,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let decoder = JSONDecoder()
                 print(response as Any)
                 do{ let json = try decoder.decode(hospitalData.self , from: data)
+                    print(json)
             
                 }
                 catch{
@@ -38,7 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }.resume()
             
         super.viewDidLoad()
-            tab
+        
         // Do any additional setup after loading the view.
     }
         
